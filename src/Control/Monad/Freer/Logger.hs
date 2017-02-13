@@ -25,6 +25,7 @@ module Control.Monad.Freer.Logger
   , runLogger
   , runStderrLogging
   , runStdoutLogging
+  , discardLogger
 
     -- * TH logging
   , logDebug
@@ -114,6 +115,13 @@ runStderrLogging = runLogger (defaultOutput stderr)
 
 runStdoutLogging :: Member IO r => Eff (Logger ': r) w -> Eff r w
 runStdoutLogging = runLogger (defaultOutput stdout)
+
+discardLogger :: Eff (Logger ': r) w -> Eff r w
+discardLogger (Val v) = return v
+discardLogger (E u q) =
+    case decomp u of
+      Right Log{} -> discardLogger (qApp q ())
+      Left  u'    -> E u' (tsingleton (discardLogger . qApp q))
 
 --------------------------------------------------------------------------------
 
