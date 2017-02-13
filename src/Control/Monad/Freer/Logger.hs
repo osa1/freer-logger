@@ -7,7 +7,7 @@
 
 module Control.Monad.Freer.Logger
   (
-    -- * MonadLogger
+    -- * Re-exports from monad-logger
     LogLevel(..)
   , LogSource
 
@@ -15,6 +15,9 @@ module Control.Monad.Freer.Logger
   , LogStr
   , ToLogStr(..)
   , fromLogStr
+
+    -- * Re-exports from freer
+  , module Control.Monad.Freer
 
     -- * Logger effect
   , Logger
@@ -47,7 +50,7 @@ module Control.Monad.Freer.Logger
     -- * TH util
   , liftLoc
 
-    -- * utilities for defining your own loggers
+    -- * Utilities for defining your own loggers
   , defaultLogStr
   , Loc (..)
   ) where
