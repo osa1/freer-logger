@@ -41,6 +41,7 @@ test-suite freer-logger-test
 
   build-depends:
     base,
+    bytestring,
     freer,
     freer-logger,
     mtl,
