@@ -20,7 +20,7 @@ module Control.Monad.Freer.Logger
   , module Control.Monad.Freer
 
     -- * Logger effect
-  , Logger
+  , Logger (..)
   , log
   , runLogger
   , runStderrLogging
